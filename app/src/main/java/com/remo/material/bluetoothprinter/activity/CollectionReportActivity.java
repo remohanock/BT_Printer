@@ -91,7 +91,11 @@ public class CollectionReportActivity extends AppCompatActivity implements Adapt
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         spinner.setOnItemSelectedListener(this);
 
-        tripList = Trip.listAll(Trip.class);
+        try {
+            tripList = Trip.listAll(Trip.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         List<String> tripHeadings = new ArrayList<>();
         tripHeadings.add("All trips");
         for (int i=0; i<tripList.size(); i++){
